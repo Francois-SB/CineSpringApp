@@ -24,9 +24,7 @@ public class Session implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
-	@Size(min=2,max=30)
-	private String title;
+
 	private Date date;
 	
 	@ManyToOne

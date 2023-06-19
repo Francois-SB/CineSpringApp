@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout" lang="">
+<head>
+<meta charset="utf-8">
+<title>404</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="col-md-5 mt-3 text-center border rounded">
+				<h3 class="mt-5 alert alert-danger p-3">Vous êtes perdu !!</h3>
+				<img th:src="@{/images/404.avif}" class="order" alt="404">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

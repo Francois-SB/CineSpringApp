@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang=""
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="card  mb-3 mt-3">
+				<div class="card-header bg-info fs-5">Liste des villes</div>
+				<div class="card-body ">
+					<div th:each="c:${cities}" class="d-inline">
+						<a
+							th:class="${currentCity == c.id}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
+							th:text="${c.name}"
+							th:href="@{/index(category=${c.id},keyword=${keyword})}"
+							th:value="${c.id}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="card  mb-3 mt-3">
+				<div class="card-header bg-info fs-5">Liste des cinémas</div>
+				<div class="card-body ">
+<!-- 					<form th:action="@{/index}" method="get" class="ms-4"> -->
+<!-- 						<label>keyword</label> <input type="text" -->
+<!-- 							class="form-control w-50 d-inline mt-1 mb-4" name="keyword"> -->
+<!-- 						<button type="submit" class="btn btn-primary ms-1"> -->
+<!-- 							<i class="bi bi-search"></i> -->
+<!-- 						</button> -->
+<!-- 					</form> -->
+					<table class="table" aria-describedby="cinema_table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Description</th>
+								<th>Marque</th>
+								<th>Prix</th>
+							</tr>
+						</thead>
+						<tbody>
+<!-- 							<tr th:each="a:${listCinema}"> -->
+<!-- 								<td th:text="${a.id}"></td> -->
+<!-- 								<td th:text="${a.name}"></td> -->
+								
+<!-- 								<td><a class="btn btn-primary" -->
+<!-- 									th:href="@{/edit(id=${a.id})}">Edit</a></td> -->
+<!-- 								<td><a class="btn btn-outline-success" -->
+<!-- 									th:href="@{/add(id=${a.id},page=${currentPage},v=${idCity},keyword=${keyword})}">AddToCart</a></td> -->
+<!-- 								<td><a class="btn btn-danger" -->
+<!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
+<!-- 								</td> -->
+<!-- 							</tr> -->
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer">
+<!-- 					<ul class="nav nav-pills"> -->
+<!-- 						<li th:each="page,status:${pages}"><a -->
+<!-- 							th:class="${currentPage==status.index}?'btn btn-info ms-1':'btn btn-outline-info ms-1'" -->
+<!-- 							th:href="@{/index(page=${status.index},idCity=${idCity},keyword=${keyword})}" -->
+<!-- 							th:text="${status.index}"></a></li> -->
+<!-- 					</ul> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
