@@ -27,7 +27,7 @@ public class Film implements Serializable{
 	@NotNull
 	@Size(min=2,max=30)
 	private String title;
-	private String descriptionString;
+	private String description;
 	
 	
 	@OneToMany(mappedBy = "film")

@@ -28,7 +28,7 @@ public class Cinema implements Serializable{
 		@Size(min=2,max=30)
 		private String name;
 
-		@ManyToOne
+		@ManyToOne //si regroupenment de ciné
 		private Address address;//pourrais avour juste address car ville contenu ds address mais plus simple d'add vill aussi pour le trie
 		
 		@ManyToOne
