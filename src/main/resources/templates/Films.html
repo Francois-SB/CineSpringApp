@@ -14,14 +14,7 @@
 			<div class="card  mb-3 mt-3">
 				<div class="card-header bg-info fs-5">Liste des films</div>
 				<div class="card-body ">
-<!-- 					<form th:action="@{/index}" method="get" class="ms-4"> -->
-<!-- 						<label>keyword</label> <input type="text" -->
-<!-- 							class="form-control w-50 d-inline mt-1 mb-4" name="keyword"> -->
-<!-- 						<button type="submit" class="btn btn-primary ms-1"> -->
-<!-- 							<i class="bi bi-search"></i> -->
-<!-- 						</button> -->
-<!-- 					</form> -->
-					<table class="table" aria-describedby="cinema_table">
+					<table class="table" aria-describedby="film_table">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -49,7 +42,7 @@
 					<ul class="nav nav-pills">
 						<li th:each="page,status:${pages}"><a
 							th:class="${currentPage==status.index}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
-							th:href="@{/films(page=${status.index},idCine=${idCine})}"
+							th:href="@{/films(page=${status.index},idCinema=${idCinema})}"
 							th:text="${status.index}"></a></li>
 					</ul>
 				</div>

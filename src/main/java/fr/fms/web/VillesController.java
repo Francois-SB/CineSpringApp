@@ -83,25 +83,40 @@ public class VillesController {
 //	}
 	
 	@GetMapping("/films")	
-	public String films(Long id, Model model,
-			@RequestParam(name="page" , defaultValue = "0") int page) {
-		Page<Film> films = null;
-		model.addAttribute("error", model.getAttribute("error"));
-		System.out.println("id  "+id);
-		
-		try {
-//			java.util.List<Film> filmssList = filmRepository.findAll();
-			
-			films = businessImpl.getFilmsByCineId(id,page);//filmRepository.findAll(PageRequest.of(page, 5));
-//			model.addAttribute("cities",businessImpl.getCities());
-			System.out.println("films   "+films.getSize());
+	public String films(Model model, @RequestParam(name="page" , defaultValue = "0") int page,
 
-			model.addAttribute("listfilms",films.getContent());	
-			model.addAttribute("pages", new int[films.getTotalPages()]);
-		} catch (Exception e) {
-			model.addAttribute("error",e.getMessage());
-			logger.error("[ARTICLE CONTROLLER : EDIT] : {} " , e.getMessage());
-		}
-		return "films";
+			 @RequestParam(name="idCinema" , defaultValue = "0") Long idCinema,
+			 @RequestParam(name="nbcart" , defaultValue = "0") int cart,
+			 @ModelAttribute(name="error") String error) {	
+Page<Film> films = null;
+model.addAttribute("error", model.getAttribute("error"));
+try {
+	
+	films = businessImpl.getFilmsByCineId(idCinema,page); 
+
+model.addAttribute("idCinema",idCinema);
+model.addAttribute("listfilms",films.getContent());	
+model.addAttribute("pages", new int[films.getTotalPages()]);
+model.addAttribute("currentPage",page);
+
+
+//model.addAttribute("nbcart", businessImpl.getNbCart());
+
+//String username;
+//Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//if (principal instanceof UserDetails) {
+//username = ((UserDetails)principal).getUsername();
+//} else {
+//username = principal.toString();
+//if(username.contains("anonymous"))
+//username = "";
+//}
+//model.addAttribute("username", " " +username);
+}
+catch(Exception e) {
+model.addAttribute("error",e.getMessage());
+logger.error("[ARTICLE CONTROLLER : INDEX] : {} " , e.getMessage());
+}		
+return "films";
 	}
 }
