@@ -11,6 +11,7 @@ import fr.fms.entities.Film;
 import fr.fms.entities.Session;
 
 public interface IBusiness {
+	public Cinema getCinemaById(long id) throws Exception;
 	public Page<Cinema> getCinemasByCityPage(Long idCity, int page)  throws Exception;
 	public Page<Cinema> getCinemasPage(String kw, int page)  throws Exception;
 	public List<City> getCities()  throws Exception;
@@ -22,6 +23,7 @@ public interface IBusiness {
 	public Cinema getCinema(long id) throws Exception;
 	public Film saveFilm(Film film) throws Exception;
 	public Film getFilm(long id) throws Exception;
+	public Page<Film> getFilmsByCineId(long id, int page) throws Exception;
 	public Session saveSession(Session session) throws Exception;
 	public Session getSession(long id) throws Exception;
 	

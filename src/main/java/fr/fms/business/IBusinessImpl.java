@@ -6,6 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 import fr.fms.dao.AddressRepository;
 import fr.fms.dao.CinemaRepository;
 import fr.fms.dao.CityRepository;
@@ -93,6 +95,16 @@ public class IBusinessImpl implements IBusiness {
 	@Override
 	public Session getSession(long id) throws Exception {
 		return sessionRipository.findById(id).get();
+	}
+	@Override
+	public Cinema getCinemaById(long id) throws Exception {
+		Optional<Cinema> cine = cinemaRepository.findById(id);
+		return cine.isPresent()? cine.get():null;
+	}
+	@Override
+	public Page<Film> getFilmsByCineId(long id, int page) throws Exception {
+		
+		return filmRepository.findByCinemaId(id, PageRequest.of(page, 5));
 	}
 	
 

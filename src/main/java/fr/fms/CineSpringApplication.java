@@ -47,7 +47,7 @@ public class CineSpringApplication implements CommandLineRunner {
 	private void generateFilm() {
 		for(int i=1;i<=36;i++) {
 		try {
-			Film film = iBusinessImpl.saveFilm(new Film(null,"desc resummé",Integer.toString(i),null));
+			Film film = iBusinessImpl.saveFilm(new Film(null,"desc resummé",Integer.toString(i),iBusinessImpl.getCinema(((i*3)%12)+1),null));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
