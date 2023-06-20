@@ -159,7 +159,7 @@ return "sessions";
 	}
 	@GetMapping("/sessionsRes")	
 	public String sessionsRes() {
-		return "404";
+		return "sessionsRes";
 	}
 	
 }
