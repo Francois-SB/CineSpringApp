@@ -16,7 +16,7 @@
 						<a
 							th:class="${currentCity == c.id}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
 							th:text="${c.name}"
-							th:href="@{/index(category=${c.id},keyword=${keyword})}"
+							th:href="@{/index(idCity=${c.id},keyword=${keyword})}"
 							th:value="${c.id}"></a>
 					</div>
 				</div>
