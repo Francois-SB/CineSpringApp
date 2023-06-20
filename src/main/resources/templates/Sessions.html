@@ -12,25 +12,25 @@
 
 		<div class="container">
 			<div class="card  mb-3 mt-3">
-				<div class="card-header bg-info fs-5">Liste des films</div>
+				<div class="card-header bg-info fs-5" th:text="'Liste des sessions pour '+${nameFilm}">Liste des sessions pour FILM</div>
 				<div class="card-body ">
-					<table class="table" aria-describedby="film_table">
+					<table class="table" aria-describedby="session_table">
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Titre</th>
-						<th>Description</th>
+								<th>Date</th>
+					
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="f:${listfilms}">
-								<td th:text="${f.id}"></td>
-								<td th:text="${f.title}"></td>
-								<td th:text="${f.description}"></td>
+							<tr th:each="s:${listSessions}">
+								<td th:text="${s.id}"></td>
+								<td th:text="${s.date}"></td>
+								
 <!-- 								<td><a class="btn btn-primary" -->
 <!-- 									th:href="@{/edit(id=${a.id})}">Edit</a></td> -->
 								<td><a class="btn btn-outline-success"
-									th:href="@{/sessions(idFilm=${f.id},page=${currentPage})}">Voir les sceances</a></td>
+									th:href="@{/sessionsRes(idSession=${s.id},page=${currentPage})}">Réserver</a></td>
 <!-- 								<td><a class="btn btn-danger" -->
 <!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
 <!-- 								</td> -->
@@ -42,7 +42,7 @@
 					<ul class="nav nav-pills">
 						<li th:each="page,status:${pages}"><a
 							th:class="${currentPage==status.index}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
-							th:href="@{/films(page=${status.index},idCinema=${idCinema})}"
+							th:href="@{/films(page=${status.index},idFilm=${idFilm})}"
 							th:text="${status.index}"></a></li>
 					</ul>
 				</div>

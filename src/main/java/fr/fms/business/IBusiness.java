@@ -26,6 +26,7 @@ public interface IBusiness {
 	public Page<Film> getFilmsByCineId(long id, int page) throws Exception;
 	public Session saveSession(Session session) throws Exception;
 	public Session getSession(long id) throws Exception;
-	
+//	public Page<Film> getAllFilmPage(long id, int page)
 	//public <T> save(<T> t)throws Exception;
+	Page<Session> getSessionsByFilmId(long idFilm, int page)throws Exception;
 }

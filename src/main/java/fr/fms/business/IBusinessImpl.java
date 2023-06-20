@@ -35,7 +35,7 @@ public class IBusinessImpl implements IBusiness {
 	FilmRepository filmRepository;
 	
 	@Autowired
-	SessionRepository sessionRipository;
+	SessionRepository sessionRepository;
 	
 	
 	//cinema
@@ -73,7 +73,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 	@Override
 	public Session saveSession(Session session) throws Exception {
-		return sessionRipository.save(session);
+		return sessionRepository.save(session);
 	}
 	@Override
 	public City getCity(long id) throws Exception {
@@ -90,11 +90,13 @@ public class IBusinessImpl implements IBusiness {
 	}
 	@Override
 	public Film getFilm(long id) throws Exception {
-		return filmRepository.findById(id).get();
+		Optional<Film> optional = filmRepository.findById(id);
+		return optional.isPresent()? optional.get() : null;
 	}
 	@Override
 	public Session getSession(long id) throws Exception {
-		return sessionRipository.findById(id).get();
+		Optional<Session> optional = sessionRepository.findById(id);
+		return optional.isPresent()? optional.get() : null;
 	}
 	@Override
 	public Cinema getCinemaById(long id) throws Exception {
@@ -105,6 +107,10 @@ public class IBusinessImpl implements IBusiness {
 	public Page<Film> getFilmsByCineId(long id, int page) throws Exception {
 		
 		return filmRepository.findByCinemaId(id, PageRequest.of(page, 5));
+	}
+	@Override
+	public Page<Session> getSessionsByFilmId(long idFilm, int page) throws Exception{
+		return sessionRepository.findByFilmId(idFilm, PageRequest.of(page, 5));
 	}
 	
 
