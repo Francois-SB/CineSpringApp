@@ -26,17 +26,17 @@ public class CineSpringApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-//		generateCity();
-//addFilmCineId();
-//		generateAddress();
-//		generateCinema();
-//		generateFilm();
-//		generateSession();
+		generateCity();
+
+		generateAddress();
+		generateCinema();
+		generateFilm();
+		generateSession();
 	}
 	private void generateSession() {
-		for(int i=1; i<=50;i++) {
+		for(int i=1; i<=350;i++) {
 			try {
-				Session session = iBusinessImpl.saveSession(new Session(null, new Date(2023, ((i*2)%12)+1, ((i*5)%31)+1), iBusinessImpl.getFilm(((i*2)%108)+1)));
+				Session session = iBusinessImpl.saveSession(new Session(null, new Date(2023, ((i*2)%12)+1, ((i*5)%31)+1), iBusinessImpl.getFilm((long)(Math.random()*36)+1)));
 			} catch (Exception e) {
 				// TODO code ascii + % + verif + regle pour mot
 				e.printStackTrace();
@@ -47,7 +47,7 @@ public class CineSpringApplication implements CommandLineRunner {
 	private void generateFilm() {
 		for(int i=1;i<=36;i++) {
 		try {
-			Film film = iBusinessImpl.saveFilm(new Film(null,"desc resummé",Integer.toString(i),iBusinessImpl.getCinema(((i*3)%12)+1),null));
+			Film film = iBusinessImpl.saveFilm(new Film(null,"Film n "+Integer.toString(((i*5)%12)+1),"desc resummé",iBusinessImpl.getCinema(((i*2)%12)+1),null));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
