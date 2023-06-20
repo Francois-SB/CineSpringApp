@@ -8,24 +8,11 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div class="container">
-			<div class="card  mb-3 mt-3">
-				<div class="card-header bg-info fs-5">Liste des villes</div>
-				<div class="card-body ">
-					<div th:each="c:${cities}" class="d-inline">
-						<a
-							th:class="${currentCity == c.id}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
-							th:text="${c.name}"
-							th:href="@{/indexVilles(idCity=${c.id},keyword=${keyword})}"
-							th:value="${c.id}"></a>
-					</div>
-				</div>
-			</div>
-		</div>
+	
 
 		<div class="container">
 			<div class="card  mb-3 mt-3">
-				<div class="card-header bg-info fs-5">Liste des cinémas</div>
+				<div class="card-header bg-info fs-5">Liste des films</div>
 				<div class="card-body ">
 <!-- 					<form th:action="@{/index}" method="get" class="ms-4"> -->
 <!-- 						<label>keyword</label> <input type="text" -->
@@ -38,19 +25,19 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Name</th>
-						
+								<th>Titre</th>
+						<th>Description</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="a:${listCinema}">
-								<td th:text="${a.id}"></td>
-								<td th:text="${a.name}"></td>
-								
+							<tr th:each="f:${listfilms}">
+								<td th:text="${f.id}"></td>
+								<td th:text="${f.title}"></td>
+								<td th:text="${f.description}"></td>
 <!-- 								<td><a class="btn btn-primary" -->
 <!-- 									th:href="@{/edit(id=${a.id})}">Edit</a></td> -->
-								<td><a class="btn btn-outline-success"
-									th:href="@{/cineChoise(id=${a.id},page=${currentPage},idCity=${idCity},keyword=${keyword})}">Voir les films</a></td>
+<!-- 								<td><a class="btn btn-outline-success" -->
+<!-- 									th:href="@{/filmChoise(id=${f.id},page=${currentPage})}">Voir les sceances</a></td> -->
 <!-- 								<td><a class="btn btn-danger" -->
 <!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
 <!-- 								</td> -->
@@ -62,7 +49,7 @@
 					<ul class="nav nav-pills">
 						<li th:each="page,status:${pages}"><a
 							th:class="${currentPage==status.index}?'btn btn-info ms-1':'btn btn-outline-info ms-1'"
-							th:href="@{/indexVilles(page=${status.index},idCity=${idCity},keyword=${keyword})}"
+							th:href="@{/films(page=${status.index},idCine=${idCine})}"
 							th:text="${status.index}"></a></li>
 					</ul>
 				</div>

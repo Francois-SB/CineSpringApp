@@ -104,7 +104,7 @@ public class IBusinessImpl implements IBusiness {
 	@Override
 	public Page<Film> getFilmsByCineId(long id, int page) throws Exception {
 		
-		return filmRepository.findByCinemaId(id, PageRequest.of(page, 5));
+		return filmRepository.findById(id, PageRequest.of(page, 5));
 	}
 	
 

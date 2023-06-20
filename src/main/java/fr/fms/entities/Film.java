@@ -35,4 +35,6 @@ public class Film implements Serializable{
 	
 	@OneToMany(mappedBy = "film")
 	private Collection<Session> sessions;
+	
+	
 }

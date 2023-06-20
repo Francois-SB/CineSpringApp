@@ -27,7 +27,7 @@ public class CineSpringApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 //		generateCity();
-
+//addFilmCineId();
 //		generateAddress();
 //		generateCinema();
 //		generateFilm();
@@ -53,6 +53,19 @@ public class CineSpringApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}
 		}
+	}
+	private void addFilmCineId() {
+		
+		try {
+			for(int i=1;i<=108;i++) {
+				Film film = iBusinessImpl.getFilm(i);
+				film.setCinema(iBusinessImpl.getCinema(((i*3)%12)+1));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	private void generateAddress() {
 		try {
