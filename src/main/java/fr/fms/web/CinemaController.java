@@ -58,12 +58,15 @@ public class CinemaController {
 		return "ccinema";
 	}
 	@PostMapping("/save")		
-	public String save(@Valid Cinema cinema, BindingResult bindingResult, Model model, RedirectAttributes redirectAttrs) {
+	public String save(@Valid Cinema cinema, BindingResult bindingResult, Model model, RedirectAttributes redirectAttrs, long addressId) {
 		try {
 			if(bindingResult.hasErrors()) {
 				model.addAttribute("addresses",ibusinessImpl.getAddresses());
 				return "ccinema";
 			}	
+			Address address = ibusinessImpl.getAddress(addressId);
+			cinema.setAddress(address);
+			cinema.setCity(address.getCity());
 			ibusinessImpl.saveCinema(cinema);		
 		}
 		catch(Exception e) {
