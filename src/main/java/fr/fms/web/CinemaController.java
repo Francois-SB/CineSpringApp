@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.fms.business.IBusinessImpl;
@@ -31,9 +32,12 @@ public class CinemaController {
 //	}
 	
 	@GetMapping("/ccinema")
-	public String article(Model model) {
+	public String ccinema(Model model,
+			@RequestParam(name="id" , defaultValue = "0") Long id) {
 		try {
+			if(id==0)
 		model.addAttribute("cinema", new Cinema());
+			
 		List<Address> listAddresses = ibusinessImpl.getAddresses();
 		model.addAttribute("listAddresses", listAddresses);
 	}catch (Exception e) {
@@ -44,7 +48,7 @@ public class CinemaController {
 	}
 	//TODO
 	@GetMapping("/ucinema")
-	public String article(Model model, Long id) {
+	public String ucinema(Model model, Long id) {
 		try {
 		Cinema updtCinema = ibusinessImpl.getCinema(id);
 		model.addAttribute("cinema", updtCinema);

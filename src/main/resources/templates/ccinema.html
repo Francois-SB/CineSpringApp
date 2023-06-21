@@ -15,8 +15,8 @@
 					des films</div>
 				<div class="card-body ">
 					<form th:action="@{/save}" method="post">
-						<div class="form-group">
 
+						<div class="form-group">
 							<label class="control-label">Nom</label> <input
 								class="form-control" type="text" name="name"
 								th:value="${cinema.name}"> <span
@@ -28,18 +28,24 @@
 								th:name="addressId" th:value="${addressId}">
 								<!-- 								<option value="">--Please choose an option--</option> -->
 								<option th:each="dropdownItem : ${listAddresses}"
-									th:value="${dropdownItem.id}" th:text="${dropdownItem.road+', '+dropdownItem.city.name}"></option>
+									th:value="${dropdownItem.id}"
+									th:text="${dropdownItem.road+', '+dropdownItem.city.name}"></option>
 
 							</select>
 						</div>
-<!-- 						<div class="form-group"> -->
-<!-- 							<label class="control-label"> Catégorie : </label> <select -->
-<!-- 								class="form-control" name="address" -->
-<!-- 								th:value="${cinema.address}"> -->
-<!-- 								<option th:each="address : ${listAddresses}" -->
-<!-- 									th:value="${address.id}" th:text="${address.road}"></option> -->
-<!-- 							</select> <span th:errors="${cinema.address}" class="text-danger"></span> -->
-<!-- 						</div> -->
+						<!-- 						<div class="form-group"> -->
+						<!-- 							<label class="control-label"> Catégorie : </label> <select -->
+						<!-- 								class="form-control" name="address" -->
+						<!-- 								th:value="${cinema.address}"> -->
+						<!-- 								<option th:each="address : ${listAddresses}" -->
+						<!-- 									th:value="${address.id}" th:text="${address.road}"></option> -->
+						<!-- 							</select> <span th:errors="${cinema.address}" class="text-danger"></span> -->
+						<!-- 						</div> -->
+						<div class="form-group invisible">
+							<label class="control-label">id</label> <input
+								class="form-control" type="text" name="id"
+								th:value="${cinema.id}"> <span th:errors="${cinema.id}"></span>
+						</div>
 						<button class="btn btn-primary" type="submit">Save</button>
 
 					</form>
