@@ -37,13 +37,13 @@ public class VillesController {
 		Page<Cinema> cinemas = null;
 		model.addAttribute("error", model.getAttribute("error"));
 		try {
+
 			if(idCity > 0)	{	
 				cinemas = businessImpl.getCinemasByCityPage(idCity,page); 
-//				if(cinemas.isEmpty())
+//				if(cinemas.isEmpty()) {
 //					model.addAttribute("error", ManageErrors.STR_ERROR);
-			}
-			else cinemas = businessImpl.getCinemasPage(kw,page); 
-						
+//			}
+			}else cinemas = businessImpl.getCinemasPage(kw,page); 		
 			model.addAttribute("idCity",idCity);
 			model.addAttribute("listCinema",cinemas.getContent());	
 			model.addAttribute("pages", new int[cinemas.getTotalPages()]);
