@@ -29,13 +29,14 @@ public class IBusinessImpl implements IBusiness {
 	CityRepository cityRepository;
 	
 	@Autowired
-	AddressRepository addressRipository;
+	AddressRepository addressRepository;
 	
 	@Autowired
 	FilmRepository filmRepository;
 	
 	@Autowired
 	SessionRepository sessionRepository;
+	
 	
 	
 	//cinema
@@ -61,7 +62,7 @@ public class IBusinessImpl implements IBusiness {
 
 	@Override
 	public Address saveAddress(Address address) throws Exception {
-		return addressRipository.save(address);
+		return addressRepository.save(address);
 	}
 	@Override
 	public Cinema saveCinema(Cinema cinema) throws Exception {
@@ -82,7 +83,7 @@ public class IBusinessImpl implements IBusiness {
 	}
 	@Override
 	public Address getAddress(long id) throws Exception {
-		return addressRipository.findById(id).get();
+		return addressRepository.findById(id).get();
 	}
 	@Override
 	public Cinema getCinema(long id) throws Exception {
@@ -111,6 +112,10 @@ public class IBusinessImpl implements IBusiness {
 	@Override
 	public Page<Session> getSessionsByFilmId(long idFilm, int page) throws Exception{
 		return sessionRepository.findByFilmId(idFilm, PageRequest.of(page, 5));
+	}
+	@Override
+	public List<Address> getAddresses() throws Exception {
+		return addressRepository.findAll();
 	}
 	
 

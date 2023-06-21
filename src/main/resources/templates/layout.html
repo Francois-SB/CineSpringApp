@@ -30,10 +30,26 @@
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> Article </a>
+						data-bs-toggle="dropdown" aria-expanded="false"> Cinema </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">New</a></li>
-							<li><a class="dropdown-item" href="#">Liste</a></li>
+							<li><a class="dropdown-item" th:href="@{ccinema}">Nouveau</a></li>
+							<li><a class="dropdown-item" th:href="@{indexVilles}">Liste</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Film </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Nouveau</a></li>
+							<li><a class="dropdown-item" th:href="@{films}">Liste</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Session </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Nouveau</a></li>
+							<li><a class="dropdown-item" th:href="@{sessions}">Liste</a></li>
 
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang=""
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="card  mb-3 mt-3">
+				<div class="card-header bg-info fs-5"
+					th:text="${id != 0? 'modif cinema':'saisir cinema'}">Liste
+					des films</div>
+				<div class="card-body ">
+					<form th:action="@{/save}" method="post">
+						<div class="form-group">
+
+							<label class="control-label">Nom</label> <input
+								class="form-control" type="text" name="name"
+								th:value="${cinema.name}"> <span
+								th:errors="${cinema.name}"></span>
+						</div>
+
+						<div class="form-group">
+							<label for="pet-select">Choisir une categorie</label> <select
+								th:name="addressId" th:value="${addressId}">
+								<!-- 								<option value="">--Please choose an option--</option> -->
+								<option th:each="dropdownItem : ${listAddresses}"
+									th:value="${dropdownItem.id}" th:text="${dropdownItem.road+', '+dropdownItem.city.name}"></option>
+
+							</select>
+						</div>
+<!-- 						<div class="form-group"> -->
+<!-- 							<label class="control-label"> Catégorie : </label> <select -->
+<!-- 								class="form-control" name="address" -->
+<!-- 								th:value="${cinema.address}"> -->
+<!-- 								<option th:each="address : ${listAddresses}" -->
+<!-- 									th:value="${address.id}" th:text="${address.road}"></option> -->
+<!-- 							</select> <span th:errors="${cinema.address}" class="text-danger"></span> -->
+<!-- 						</div> -->
+						<button class="btn btn-primary" type="submit">Save</button>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

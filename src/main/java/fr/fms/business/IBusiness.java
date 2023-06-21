@@ -17,16 +17,20 @@ public interface IBusiness {
 	public List<City> getCities()  throws Exception;
 	public City saveCity(City city) throws Exception;
 	public City getCity(long id) throws Exception;
+	
 	public Address saveAddress(Address address) throws Exception;
 	public Address getAddress(long id) throws Exception;
+	public List<Address> getAddresses() throws Exception;
+	
 	public Cinema saveCinema(Cinema cinema) throws Exception;
 	public Cinema getCinema(long id) throws Exception;
+	
 	public Film saveFilm(Film film) throws Exception;
 	public Film getFilm(long id) throws Exception;
 	public Page<Film> getFilmsByCineId(long id, int page) throws Exception;
+	
 	public Session saveSession(Session session) throws Exception;
 	public Session getSession(long id) throws Exception;
-//	public Page<Film> getAllFilmPage(long id, int page)
 	//public <T> save(<T> t)throws Exception;
 	Page<Session> getSessionsByFilmId(long idFilm, int page)throws Exception;
 }
