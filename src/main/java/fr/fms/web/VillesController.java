@@ -69,97 +69,11 @@ public class VillesController {
 		}		
 		return "indexVilles";
 	}
-//	@GetMapping("/cineChoise")	
-//	public String cineChoise(Long id, Model model) {
-//		Cinema cinema;
-//		try {
-//			cinema = businessImpl.getCinemaById(id);
-//			model.addAttribute("cities",businessImpl.getCities());
-//			model.addAttribute("cinema", cinema);
-//		} catch (Exception e) {
-//			model.addAttribute("error",e.getMessage());
-//			logger.error("[ARTICLE CONTROLLER : EDIT] : {} " , e.getMessage());
-//		}
-//		return "films";
-//	}
-	
-	@GetMapping("/films")	
-	public String films(Model model, @RequestParam(name="page" , defaultValue = "0") int page,
 
-			 @RequestParam(name="idCinema" , defaultValue = "0") Long idCinema,
-			 @RequestParam(name="nbcart" , defaultValue = "0") int cart,
-			 @ModelAttribute(name="error") String error) {	
-Page<Film> films = null;
-model.addAttribute("error", model.getAttribute("error"));
-try {
-	
-	films = businessImpl.getFilmsByCineId(idCinema,page); 
-
-model.addAttribute("idCinema",idCinema);
-model.addAttribute("listfilms",films.getContent());	
-model.addAttribute("pages", new int[films.getTotalPages()]);
-model.addAttribute("currentPage",page);
-
-
-//model.addAttribute("nbcart", businessImpl.getNbCart());
-
-//String username;
-//Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//if (principal instanceof UserDetails) {
-//username = ((UserDetails)principal).getUsername();
-//} else {
-//username = principal.toString();
-//if(username.contains("anonymous"))
-//username = "";
-//}
-//model.addAttribute("username", " " +username);
-}
-catch(Exception e) {
-model.addAttribute("error",e.getMessage());
-logger.error("[ARTICLE CONTROLLER : INDEX] : {} " , e.getMessage());
-}		
-return "films";
-	}
 	
 	
-	@GetMapping("/sessions")	
-	public String sessions(Model model, @RequestParam(name="page" , defaultValue = "0") int page,
-			 @RequestParam(name="idFilm" , defaultValue = "0") long idFilm,
-			 @ModelAttribute(name="error") String error) {	
-Page<Session> sessions = null;
-model.addAttribute("error", model.getAttribute("error"));
-try {
 	
-	sessions = businessImpl.getSessionsByFilmId(idFilm,page); 
-	model.addAttribute("nameFilm",businessImpl.getFilm(idFilm).getTitle());
-model.addAttribute("idFilm",idFilm);
-model.addAttribute("listSessions",sessions.getContent());	
-model.addAttribute("pages", new int[sessions.getTotalPages()]);
-model.addAttribute("currentPage",page);
-
-
-//model.addAttribute("nbcart", businessImpl.getNbCart());
-
-//String username;
-//Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//if (principal instanceof UserDetails) {
-//username = ((UserDetails)principal).getUsername();
-//} else {
-//username = principal.toString();
-//if(username.contains("anonymous"))
-//username = "";
-//}
-//model.addAttribute("username", " " +username);
-}
-catch(Exception e) {
-model.addAttribute("error",e.getMessage());
-logger.error("[ARTICLE CONTROLLER : INDEX] : {} " , e.getMessage());
-}		
-return "sessions";
-	}
-	@GetMapping("/sessionsRes")	
-	public String sessionsRes() {
-		return "sessionsRes";
-	}
+	
+	
 	
 }
