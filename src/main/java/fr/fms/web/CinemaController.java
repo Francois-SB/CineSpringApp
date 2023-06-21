@@ -25,11 +25,11 @@ public class CinemaController {
 	@Autowired
 	IBusinessImpl ibusinessImpl;
 	private final Logger logger = LoggerFactory.getLogger(CinemaController.class);
-//	@GetMapping("/delete")
-//	public String delete(Long id, int page, String keyword, Long catId) {
-//		articleRepository.deleteById(id);
-//		return "redirect:/index?page="+page+"&keyword="+keyword+"&catId"+catId;
-//	}
+	@GetMapping("/dcinema")
+	public String dcinema(Long id, int page, String keyword, Long idCity) {
+		ibusinessImpl.deleteCinemaById(id);
+		return "redirect:/indexVilles?page="+page+"&keyword="+keyword+"&idCity"+idCity;
+	}
 	
 	@GetMapping("/ccinema")
 	public String ccinema(Model model,

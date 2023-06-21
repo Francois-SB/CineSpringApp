@@ -51,9 +51,9 @@
 									th:href="@{/ucinema(id=${a.id})}">Edit</a></td>
 								<td><a class="btn btn-outline-success"
 									th:href="@{/films(idCinema=${a.id})}">Voir les films</a></td>
-<!-- 								<td><a class="btn btn-danger" -->
-<!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
-<!-- 								</td> -->
+								<td><a class="btn btn-danger"
+									th:href="@{/dcinema(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

@@ -11,40 +11,45 @@
 		<div class="container">
 			<div class="card  mb-3 mt-3">
 				<div class="card-header bg-info fs-5"
-					th:text="${id == 0? 'modif cinema':'saisir cinema'}">Liste
-					des films</div>
+					th:text="${id == 0? 'modif film':'saisir film'}">films</div>
 				<div class="card-body ">
-					<form th:action="@{/save}" method="post">
+					<form th:action="@{/sfilm}" method="post">
 
 						<div class="form-group">
-							<label class="control-label">Nom</label> <input
-								class="form-control" type="text" name="name"
-								th:value="${cinema.name}"> <span
-								th:errors="${cinema.name}"></span>
+							<label class="control-label">Titre</label> <input
+								class="form-control" type="text" name="title"
+								th:value="${film.title}"><span
+								th:errors="${film.title}"></span>
+						</div>
+												<div class="form-group">
+							<label class="control-label">Resumé</label> <input
+								class="form-control" type="text" name="description"
+								th:value="${film.description}"><span
+								th:errors="${film.description}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="pet-select">Choisir une categorie</label> <select
-								th:name="addressId" th:value="${addressId}">
+							<label for="pet-select">Choisir le cinema qui le projète</label> <select
+								th:name="idCinema" th:value="${idCinema}">
 								<!-- 								<option value="">--Please choose an option--</option> -->
-								<option th:each="dropdownItem : ${listAddresses}"
+								<option th:each="dropdownItem : ${cFilmCinemas}"
 									th:value="${dropdownItem.id}"
-									th:text="${dropdownItem.road+', '+dropdownItem.city.name}"></option>
+									th:text="${dropdownItem.name+', '+dropdownItem.address.road+', '+dropdownItem.address.city.name}"></option>
 
 							</select>
 						</div>
 						<!-- 						<div class="form-group"> -->
 						<!-- 							<label class="control-label"> Catégorie : </label> <select -->
 						<!-- 								class="form-control" name="address" -->
-						<!-- 								th:value="${cinema.address}"> -->
+						<!-- 								th:value="${film.address}"> -->
 						<!-- 								<option th:each="address : ${listAddresses}" -->
 						<!-- 									th:value="${address.id}" th:text="${address.road}"></option> -->
-						<!-- 							</select> <span th:errors="${cinema.address}" class="text-danger"></span> -->
+						<!-- 							</select> <span th:errors="${film.address}" class="text-danger"></span> -->
 						<!-- 						</div> -->
 						<div class="form-group invisible">
 							<label class="control-label">id</label> <input
 								class="form-control" type="text" name="id"
-								th:value="${cinema.id}"> <span th:errors="${cinema.id}"></span>
+								th:value="${film.id}"> <span th:errors="${film.id}"></span>
 						</div>
 						<button class="btn btn-primary" type="submit">Save</button>
 

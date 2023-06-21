@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-	
+
 
 		<div class="container">
 			<div class="card  mb-3 mt-3">
@@ -19,7 +19,7 @@
 							<tr>
 								<th>Id</th>
 								<th>Titre</th>
-						<th>Description</th>
+								<th>Description</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -27,13 +27,14 @@
 								<td th:text="${f.id}"></td>
 								<td th:text="${f.title}"></td>
 								<td th:text="${f.description}"></td>
-<!-- 								<td><a class="btn btn-primary" -->
-<!-- 									th:href="@{/edit(id=${a.id})}">Edit</a></td> -->
+								<td><a class="btn btn-primary"
+									th:href="@{/ufilm(id=${f.id},page=${currentPage})}">Edit</a></td>
 								<td><a class="btn btn-outline-success"
-									th:href="@{/sessions(idFilm=${f.id},page=${currentPage})}">Voir les sceances</a></td>
-<!-- 								<td><a class="btn btn-danger" -->
-<!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
-<!-- 								</td> -->
+									th:href="@{/sessions(idFilm=${f.id},page=${currentPage})}">Voir
+										les sceances</a></td>
+								<td><a class="btn btn-danger"
+									th:href="@{/dfilm(id=${f.id},page=${currentPage})}">Delete</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

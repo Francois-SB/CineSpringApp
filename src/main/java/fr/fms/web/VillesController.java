@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import antlr.collections.List;
 import fr.fms.business.IBusinessImpl;
@@ -33,6 +34,7 @@ public class VillesController {
 									 @RequestParam(name="keyword" , defaultValue = "") String kw,
 									 @RequestParam(name="idCity" , defaultValue = "0") Long idCity,
 									 @RequestParam(name="nbcart" , defaultValue = "0") int cart,
+									 RedirectAttributes redirectAttributes,
 									 @ModelAttribute(name="error") String error) {	
 		Page<Cinema> cinemas = null;
 		model.addAttribute("error", model.getAttribute("error"));
@@ -45,7 +47,9 @@ public class VillesController {
 //			}
 			}else cinemas = businessImpl.getCinemasPage(kw,page); 		
 			model.addAttribute("idCity",idCity);
-			model.addAttribute("listCinema",cinemas.getContent());	
+			model.addAttribute("listCinema",cinemas.getContent());
+//			redirectAttributes.addFlashAttribute("listCinemas", cinemas.getContent());
+//			System.out.println("cinemas list from index    "+ cinemas.getContent().get(3));
 			model.addAttribute("pages", new int[cinemas.getTotalPages()]);
 			model.addAttribute("currentPage",page);
 			model.addAttribute("keyword",kw);

@@ -117,6 +117,24 @@ public class IBusinessImpl implements IBusiness {
 	public List<Address> getAddresses() throws Exception {
 		return addressRepository.findAll();
 	}
+	@Override
+	public void deleteCinemaById(Long id) {
+		cinemaRepository.deleteById(id);
+		
+	}
+	@Override
+	public List<Cinema> getCinemas() {
+		return cinemaRepository.findAll();
+	}
+	@Override
+	public void deleteFilmById(Long id) {
+		filmRepository.deleteById(id);
+		
+	}
+	@Override
+	public Page<Film> getAllFilms(int page) {
+		return filmRepository.findAll(PageRequest.of(page, 5));
+	}
 	
 
 
