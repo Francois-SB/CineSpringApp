@@ -69,7 +69,7 @@ return "films";
 	@GetMapping("/dfilm")//
 	public String dfilm(Model model ,Long id, int page,  Long idCinema) {
 		ibusinessImpl.deleteFilmById(id);
-		return "redirect:/films?page="+page+"&idCity"+idCinema;
+		return "redirect:/films?page="+page+"&idCinema"+idCinema;
 	}
 	
 	@GetMapping("/cfilm")
@@ -105,7 +105,7 @@ model.addAttribute("cFilmCinemas", ibusinessImpl.getCinemas());
 	//TODO gérer l'aval pour avoir le contxte d'arrivée et le transmettre ufilm -> cfilm -> sfilm (contexte), cfilm -> sfilm(peut avoir contexte)
 	@PostMapping("/sfilm")		
 	public String save(@Valid Film film, BindingResult bindingResult, Model model, RedirectAttributes redirectAttrs, 
-			@RequestParam(name="idCinema" , defaultValue = "0") Long idCinema) {
+			@RequestParam(name="idCinema" , defaultValue = "0") Long idCinema,int page) {
 		try {
 			if(bindingResult.hasErrors()) {
 				model.addAttribute("listCinemas",ibusinessImpl.getCinemas());
@@ -120,7 +120,7 @@ model.addAttribute("cFilmCinemas", ibusinessImpl.getCinemas());
 			redirectAttrs.addAttribute("error",e.getMessage());
 			logger.error("[CINEMA CONTROLLER : SAVE CINEMA] : {} " , e.getMessage());
 		}
-		return "redirect:/films?idCinema="+idCinema;
+		return "redirect:/films?page="+page+"&idCinema"+idCinema;
 	}
 	
 	

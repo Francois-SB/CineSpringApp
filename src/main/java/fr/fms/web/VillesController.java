@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,16 +58,16 @@ public class VillesController {
 			model.addAttribute("cities",businessImpl.getCities());
 //			model.addAttribute("nbcart", businessImpl.getNbCart());
 			
-//			String username;
-//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//			if (principal instanceof UserDetails) {
-//				username = ((UserDetails)principal).getUsername();
-//			} else {
-//				username = principal.toString();
-//				if(username.contains("anonymous"))
-//					username = "";
-//			}
-//			model.addAttribute("username", " " +username);
+			String username;
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if (principal instanceof UserDetails) {
+				username = ((UserDetails)principal).getUsername();
+			} else {
+				username = principal.toString();
+				if(username.contains("anonymous"))
+					username = "";
+			}
+			model.addAttribute("username", " " +username);
 		}
 		catch(Exception e) {
 			model.addAttribute("error",e.getMessage());

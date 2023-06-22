@@ -56,6 +56,11 @@
 							class="bi bi-cart3" text="#"></i></a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Log
 							In/Out</a></li>
+					
+		    	<li class="nav navbar-nav pull-right">
+		    		<a th:href="@{/logout}" class="fas fa-sign-in-alt" th:text="${username}"></a>
+		    	</li>
+		    
 				</ul>
 			</div>
 		</div>
@@ -108,7 +113,7 @@
 					</div>
 					<div class="text-center p-3 border-top border-white"
 						style="color: #999999">
-						© 2023 Copyright: <a class="text-white" th:href="@{/indexVilles}">Pazani</a>
+						© 2023 Copyright footer: <a class="text-white" th:href="@{/indexVilles}">Pazmani</a>
 					</div>
 				</div>
 			</div>
