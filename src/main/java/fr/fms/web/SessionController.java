@@ -69,7 +69,7 @@ return "sessions";
 	@GetMapping("/dsession")
 	public String dsession(Model model ,Long id, int page,  Long idFilm) {
 		ibusinessImpl.deleteSessionById(id);
-		return "sessions?page="+page+"&idFilm"+idFilm;
+		return "redirect:/sessions?page="+page+"&idFilm="+idFilm;
 	}
 	
 	@GetMapping("/csession")
@@ -85,7 +85,7 @@ model.addAttribute("cSessionFilms", ibusinessImpl.getAllFilms());
 		model.addAttribute("error",e.getMessage());
 		logger.error("[session CONTROLLER : INDEX] : {} " , e.getMessage());
 	}
-		return "cfilm";
+		return "csession";
 	}
 	//TODO
 	@GetMapping("/usession")
@@ -99,7 +99,7 @@ model.addAttribute("cSessionFilms", ibusinessImpl.getAllFilms());
 			logger.error("[session CONTROLLER : INDEX] : {} " , e.getMessage());
 		}
 	
-		return "redirect:/csession?page="+page+"&idFilm="+idFilm;
+		return "csession";
 	}
 	//TODO gérer l'aval pour avoir le contxte d'arrivée et le transmettre ufilm -> cfilm -> sfilm (contexte), cfilm -> sfilm(peut avoir contexte)
 	@PostMapping("/ssession")		
@@ -119,7 +119,7 @@ model.addAttribute("cSessionFilms", ibusinessImpl.getAllFilms());
 			redirectAttrs.addAttribute("error",e.getMessage());
 			logger.error("[CINEMA CONTROLLER : SAVE CINEMA] : {} " , e.getMessage());
 		}
-		return "redirect:/csession?page="+page+"&idFilm="+idFilm;
+		return "redirect:/sessions?page="+page+"&idFilm="+idFilm;
 	}
 	
 }
