@@ -30,6 +30,7 @@ public interface IBusiness {
 	public Cinema getCinema(long id) throws Exception;
 	
 	public Page<Film> getAllFilms(int page);
+	public List<Film> getAllFilms();
 	public Film saveFilm(Film film) throws Exception;
 	public Film getFilm(long id) throws Exception;
 	public void deleteFilmById(Long id);
@@ -39,6 +40,8 @@ public interface IBusiness {
 	public Session getSession(long id) throws Exception;
 	//public <T> save(<T> t)throws Exception;
 	public Page<Session> getSessionsByFilmId(long idFilm, int page)throws Exception;
+	public void deleteSessionById(Long id);
+	
 
 
 	

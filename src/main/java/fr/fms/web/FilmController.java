@@ -66,10 +66,10 @@ return "films";
 	}
 	
 	/////////////////////////////////////////////CRUD////////////////////////////////////////////////
-	@GetMapping("/dfilm")
-	public String dfilm(Model model ,Long id, int page,  Long idCity) {
+	@GetMapping("/dfilm")//
+	public String dfilm(Model model ,Long id, int page,  Long idCinema) {
 		ibusinessImpl.deleteFilmById(id);
-		return "redirect:/films?page="+page+"&idCity"+idCity;
+		return "redirect:/films?page="+page+"&idCity"+idCinema;
 	}
 	
 	@GetMapping("/cfilm")

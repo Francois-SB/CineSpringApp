@@ -135,7 +135,15 @@ public class IBusinessImpl implements IBusiness {
 	public Page<Film> getAllFilms(int page) {
 		return filmRepository.findAll(PageRequest.of(page, 5));
 	}
-	
+	@Override
+	public void deleteSessionById(Long id) {
+		sessionRepository.deleteById(id);
+		
+	}
+	@Override
+	public List<Film> getAllFilms() {
+		return filmRepository.findAll();
+	}
 
 
 

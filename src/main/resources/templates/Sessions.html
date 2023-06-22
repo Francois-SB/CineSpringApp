@@ -27,13 +27,13 @@
 								<td th:text="${s.id}"></td>
 								<td th:text="${s.date}"></td>
 								
-<!-- 								<td><a class="btn btn-primary" -->
-<!-- 									th:href="@{/edit(id=${a.id})}">Edit</a></td> -->
+								<td><a class="btn btn-primary"
+									th:href="@{/usession(id=${s.id},page=${currentPage},idFilm=${idFilm})}">Edit</a></td>
 								<td><a class="btn btn-outline-success"
-									th:href="@{/sessionsRes(idSession=${s.id},page=${currentPage})}">Réserver</a></td>
-<!-- 								<td><a class="btn btn-danger" -->
-<!-- 									th:href="@{/delete(id=${a.id},page=${currentPage},keyword=${keyword})}">Delete</a> -->
-<!-- 								</td> -->
+									th:href="@{/sessionsRes(idSession=${s.id},page=${currentPage},idFilm=${idFilm})}">Réserver</a></td>
+								<td><a class="btn btn-danger"
+									th:href="@{/dsession(id=${s.id},page=${currentPage},idFilm=${idFilm})}">Delete</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

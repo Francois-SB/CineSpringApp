@@ -14,22 +14,22 @@
 					th:text="${id == 0? 'modif cinema':'saisir cinema'}">Liste
 					des films</div>
 				<div class="card-body ">
-					<form th:action="@{/save}" method="post">
+					<form th:action="@{/ssession}" method="post">
 
 						<div class="form-group">
-							<label class="control-label">Nom</label> <input
-								class="form-control" type="text" name="name"
-								th:value="${cinema.name}"> <span
-								th:errors="${cinema.name}"></span>
+							<label class="control-label">Date</label> <input
+								class="form-control" type="text" name="date"
+								th:value="${cinema.date}"> <span
+								th:errors="${cinema.date}"></span>
 						</div>
 
 						<div class="form-group">
-							<label for="pet-select">Choisir une categorie</label> <select
-								th:name="addressId" th:value="${addressId}">
+							<label for="pet-select">Choisir un film</label> <select
+								th:name="filmId" th:value="${filmId}">
 								<!-- 								<option value="">--Please choose an option--</option> -->
-								<option th:each="dropdownItem : ${listAddresses}"
+								<option th:each="dropdownItem : ${listFilms}"
 									th:value="${dropdownItem.id}"
-									th:text="${dropdownItem.road+', '+dropdownItem.city.name}"></option>
+									th:text="${dropdownItem.title}"></option>
 
 							</select>
 						</div>
@@ -44,7 +44,7 @@
 						<div class="form-group invisible">
 							<label class="control-label">id</label> <input
 								class="form-control" type="text" name="id"
-								th:value="${cinema.id}"> <span th:errors="${cinema.id}"></span>
+								th:value="${session.id}"> <span th:errors="${session.id}"></span>
 						</div>
 						<button class="btn btn-primary" type="submit">Save</button>
 
